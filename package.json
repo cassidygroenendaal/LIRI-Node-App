@@ -1,0 +1,15 @@
+{
+  "name": "liri-app",
+  "version": "1.0.0",
+  "description": "An app used to search songs, concerts, and movies",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cassidygroenendaal/HW-10-LIRI-Node-App"
+  },
+  "author": "Cassidy Groenendaal",
+  "license": "ISC"
+}
