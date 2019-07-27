@@ -1,47 +1,238 @@
 
-07/27/2019 17:15:45
-Artist:          Lil Wayne
-Song:            Scared of the Dark (feat. XXXTENTACION)
-Preview Link:    Not Available
-Album:           Spider-Man: Into the Spider-Verse (Soundtrack From & Inspired by the Motion Picture)
-------------------------------------------
-07/27/2019 17:15:55
-Artist:          Ace of Base
-Song:            The Sign
-Preview Link:    https://p.scdn.co/mp3-preview/4c463359f67dd3546db7294d236dd0ae991882ff?cid=34d625ca127a41788bb31fd2593a4e3f
-Album:           The Sign (US Album) [Remastered]
-------------------------------------------
-07/27/2019 17:16:04
-Title:           Us
-Released:        22 Mar 2019
-IMDB:            7.0/10
-Rotten Tomatoes: 94%
-Countries:       USA, Japan, China
-Languages:       English
-Plot:            A family's serene beach vacation turns to chaos when their doppelgängers appear and begin to terrorize them.
-Actors:          Lupita Nyong'o, Winston Duke, Elisabeth Moss, Tim Heidecker
-------------------------------------------
-07/27/2019 17:16:17
+07/27/2019 18:23:08
 Artist:          Young the Giant
+
+Concert 1
 Venue:           Salt Lake City Twilight Concert Series
 Location:        Salt Lake City, UT, United States
 Date:            08/01/2019 19:00
 ------------------------------------------
-07/27/2019 17:16:47
-Movie:           titanic
-Error:           Error: Invalid API key!
+Concert 2
+Venue:           OSHEAGA 2019
+Location:        Montreal, Canada
+Date:            08/03/2019 19:00
 ------------------------------------------
-07/27/2019 17:17:51
-Title:           The Shawshank Redemption
-Released:        14 Oct 1994
-IMDB:            9.3/10
-Rotten Tomatoes: 91%
-Countries:       USA
-Languages:       English
-Plot:            Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.
-Actors:          Tim Robbins, Morgan Freeman, Bob Gunton, William Sadler
+Concert 3
+Venue:           Marrymoor Park Concerts
+Location:        Seattle, WA, United States
+Date:            08/04/2019 19:00
 ------------------------------------------
-07/27/2019 17:21:06
-Artist:           drake
-Error:           Error: This artist has no upcoming concerts.
+Concert 4
+Venue:           Edgefield Amphitheater
+Location:        Troutdale, OR, United States
+Date:            08/06/2019 19:00
 ------------------------------------------
+Concert 5
+Venue:           Santa Barbara Bowl
+Location:        Santa Barbara, CA, United States
+Date:            08/08/2019 19:00
+------------------------------------------
+Concert 6
+Venue:           Cal Coast Credit Union Open Air Theatre
+Location:        San Diego, CA, United States
+Date:            08/09/2019 19:00
+------------------------------------------
+Concert 7
+Venue:           The Forum
+Location:        Los Angeles, CA, United States
+Date:            08/10/2019 19:00
+------------------------------------------
+Concert 8
+Venue:           Comerica Theatre
+Location:        Phoenix, AZ, United States
+Date:            08/11/2019 19:00
+------------------------------------------
+Concert 9
+Venue:           The Greek Theatre
+Location:        San Francisco, CA, United States
+Date:            08/15/2019 19:00
+------------------------------------------
+Concert 10
+Venue:           Downtown Las Vegas Events Center - DLVEC
+Location:        Las Vegas, NV, United States
+Date:            08/16/2019 19:00
+------------------------------------------
+Concert 11
+Venue:           Woodstock 50
+Location:        Watkins Glen, NY, United States
+Date:            08/18/2019 19:00
+------------------------------------------
+Concert 12
+Venue:           Paard Van Troje
+Location:        Den Haag, Netherlands
+Date:            09/18/2019 19:00
+------------------------------------------
+Concert 13
+Venue:           Reeperbahn Festival w/ Carlie Hanson
+Location:        Hamburg, Germany
+Date:            09/18/2019 19:00
+------------------------------------------
+Concert 14
+Venue:           Tivoli Vredenburg
+Location:        Utrecht, Netherlands
+Date:            09/19/2019 19:00
+------------------------------------------
+Concert 15
+Venue:           Reeperbahn Festival w/ Carlie Hanson
+Location:        Hamburg, Germany
+Date:            09/19/2019 19:00
+------------------------------------------
+Concert 16
+Venue:           Reeperbahn Festival w/ Carlie Hanson
+Location:        Hamburg, Germany
+Date:            09/20/2019 19:00
+------------------------------------------
+Concert 17
+Venue:           Paradiso
+Location:        Amsterdam, Netherlands
+Date:            09/21/2019 19:00
+------------------------------------------
+Concert 18
+Venue:           Reeperbahn Festival w/ Carlie Hanson
+Location:        Hamburg, Germany
+Date:            09/21/2019 19:00
+------------------------------------------
+Concert 19
+Venue:           LUXOR
+Location:        Koln, Germany
+Date:            09/22/2019 19:00
+------------------------------------------
+Concert 20
+Venue:           The Electric Ballroom
+Location:        Little London, United Kingdom
+Date:            09/25/2019 19:00
+------------------------------------------
+Concert 21
+Venue:           Santeria Social Club
+Location:        Milan, Italy
+Date:            09/28/2019 19:00
+------------------------------------------
+Concert 22
+Venue:           Voodoo Music + Arts Experience
+Location:        New Orleans, LA, United States
+Date:            10/26/2019 19:00
+------------------------------------------
+==========================================
+07/27/2019 18:28:27
+
+Track 1
+Artist:          Leslie Odom Jr.
+Song:            Wait for It
+Preview Link:    https://p.scdn.co/mp3-preview/f6c668364f0fead65b8420cbd473c2d2a554938e?cid=34d625ca127a41788bb31fd2593a4e3f
+Album:           Hamilton (Original Broadway Cast Recording)
+------------------------------------------
+Track 2
+Artist:          H.E.R.
+Song:            Wait For It
+Preview Link:    https://p.scdn.co/mp3-preview/b03c26b78e5d57809c7068bcfc84b3cb5cabd6f0?cid=34d625ca127a41788bb31fd2593a4e3f
+Album:           H.E.R.
+------------------------------------------
+Track 3
+Artist:          Usher
+Song:            Wait For It
+Preview Link:    https://p.scdn.co/mp3-preview/055392d5255cfa7be3d41dbdfdb66e403d461f7e?cid=34d625ca127a41788bb31fd2593a4e3f
+Album:           The Hamilton Mixtape
+------------------------------------------
+Track 4
+Artist:          Berner
+Song:            Wait for It (feat. The Game)
+Preview Link:    https://p.scdn.co/mp3-preview/f616efa96d4ab2720ade53ee093e16793c09d7fb?cid=34d625ca127a41788bb31fd2593a4e3f
+Album:           The Big Pescado
+------------------------------------------
+Track 5
+Artist:          Usher
+Song:            Wait For It
+Preview Link:    https://p.scdn.co/mp3-preview/055392d5255cfa7be3d41dbdfdb66e403d461f7e?cid=34d625ca127a41788bb31fd2593a4e3f
+Album:           Wait For It (from The Hamilton Mixtape)
+------------------------------------------
+Track 6
+Artist:          Yo Gotti
+Song:            Wait for It
+Preview Link:    https://p.scdn.co/mp3-preview/90d1cf7152c591c33c615b53036eb85753cb2702?cid=34d625ca127a41788bb31fd2593a4e3f
+Album:           Wait for It
+------------------------------------------
+Track 7
+Artist:          Rob $tone
+Song:            Smash (feat. Gucci Mane)
+Preview Link:    https://p.scdn.co/mp3-preview/89bfeda682943ad3ccbff5da417f11e6963e3883?cid=34d625ca127a41788bb31fd2593a4e3f
+Album:           Don't Wait for It
+------------------------------------------
+Track 8
+Artist:          Siaira Shawn
+Song:            Wait For It
+Preview Link:    https://p.scdn.co/mp3-preview/fcfd14a645d6c700b83088284c0369aed931a705?cid=34d625ca127a41788bb31fd2593a4e3f
+Album:           Wait For It
+------------------------------------------
+Track 9
+Artist:          Leslie Odom Jr.
+Song:            Wait for It
+Preview Link:    https://p.scdn.co/mp3-preview/f6c668364f0fead65b8420cbd473c2d2a554938e?cid=34d625ca127a41788bb31fd2593a4e3f
+Album:           Hamilton (Original Broadway Cast Recording)
+------------------------------------------
+Track 10
+Artist:          Jimmie Allen
+Song:            Wait for It
+Preview Link:    https://p.scdn.co/mp3-preview/27ab9fd48e265b69daade6130ad51d5889b97af5?cid=34d625ca127a41788bb31fd2593a4e3f
+Album:           Mercury Lane
+------------------------------------------
+Track 11
+Artist:          Delicious Printer
+Song:            Destroy This Picture or Wait for It to Become Perfect
+Preview Link:    https://p.scdn.co/mp3-preview/bf9d0a85d8b5bda0d45cc6ee22ca264bcaf97f0e?cid=34d625ca127a41788bb31fd2593a4e3f
+Album:           Immerse in Endless Ocean
+------------------------------------------
+Track 12
+Artist:          Hot Mulligan
+Song:            Wait for It
+Preview Link:    https://p.scdn.co/mp3-preview/be55a0a5891c3c6cb93b55de2b07abed070cdc0c?cid=34d625ca127a41788bb31fd2593a4e3f
+Album:           Opportunities
+------------------------------------------
+Track 13
+Artist:          Sstedi
+Song:            Wait for It
+Preview Link:    https://p.scdn.co/mp3-preview/d09e4cf394971f0e95975070c06fb0f6ff4ff8d1?cid=34d625ca127a41788bb31fd2593a4e3f
+Album:           Wait for It
+------------------------------------------
+Track 14
+Artist:          Round2Crew
+Song:            Wait for It
+Preview Link:    https://p.scdn.co/mp3-preview/f7cc037a1739eaaf01e4b8039fdf8bc0bbc9ed9c?cid=34d625ca127a41788bb31fd2593a4e3f
+Album:           Your Girlfriend Thinks I'm the Shit
+------------------------------------------
+Track 15
+Artist:          Original Broadway Cast of Hamilton
+Song:            Wait for It - Instrumental
+Preview Link:    https://p.scdn.co/mp3-preview/2251c54c45993e80d21374757508ab277db28081?cid=34d625ca127a41788bb31fd2593a4e3f
+Album:           The Hamilton Instrumentals
+------------------------------------------
+Track 16
+Artist:          Rob $tone
+Song:            What I'm 'bout (feat. J. Davi$)
+Preview Link:    https://p.scdn.co/mp3-preview/1ecdb2098c92e4aa2a8923bec0532a1df0595921?cid=34d625ca127a41788bb31fd2593a4e3f
+Album:           Don't Wait for It
+------------------------------------------
+Track 17
+Artist:          Rockabye Baby!
+Song:            Wait for It
+Preview Link:    https://p.scdn.co/mp3-preview/4018914634594034a8ff2d3df6c65e9291e378ae?cid=34d625ca127a41788bb31fd2593a4e3f
+Album:           Lullaby Renditions of Songs from Hamilton
+------------------------------------------
+Track 18
+Artist:          Rob $tone
+Song:            Little Piggy (feat. Meechy Darko)
+Preview Link:    https://p.scdn.co/mp3-preview/894294a7683ee9fc943265a2c83fa662d29e366d?cid=34d625ca127a41788bb31fd2593a4e3f
+Album:           Don't Wait for It
+------------------------------------------
+Track 19
+Artist:          Thaddeus J
+Song:            Wait for It
+Preview Link:    https://p.scdn.co/mp3-preview/00067c098b77226abf94599680116110fe4e4c3a?cid=34d625ca127a41788bb31fd2593a4e3f
+Album:           Wait for It
+------------------------------------------
+Track 20
+Artist:          Jilly
+Song:            Wait For It
+Preview Link:    https://p.scdn.co/mp3-preview/a8b393ad4a0c53ab45fa882eabee56e4c0a6cb8a?cid=34d625ca127a41788bb31fd2593a4e3f
+Album:           Wait For It
+------------------------------------------
+==========================================

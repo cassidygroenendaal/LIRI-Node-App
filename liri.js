@@ -20,14 +20,15 @@ const SPOTIFY = new SPOTIFY_API(KEYS.spotify),
 //------------------------------------------------
 
 const LIRI = {
-	omdbURL      : `http://www.omdbapi.com/?apikey=${OMDB_KEY}&t=`,
-	bandsURL1    : 'https://rest.bandsintown.com/artists/',
-	bandsURL2    : `/events?app_id=${BANDS_KEY}`,
-	userInput    : process.argv.slice(3).join('+'),
-	logTime      : '',
-	logSeparator : '------------------------------------------',
+	omdbURL       : `http://www.omdbapi.com/?apikey=${OMDB_KEY}&t=`,
+	bandsURL1     : 'https://rest.bandsintown.com/artists/',
+	bandsURL2     : `/events?app_id=${BANDS_KEY}`,
+	userInput     : process.argv.slice(3).join('+'),
+	logTime       : '',
+	logSeparator  : '==========================================',
+	itemSeparator : '------------------------------------------',
 
-	askLIRI      : function(command) {
+	askLIRI       : function(command) {
 		this.logTime = MOMENT().format('L HH:mm:ss');
 		switch (command) {
 			case 'concert-this':
@@ -38,18 +39,33 @@ const LIRI = {
 								'This artist has no upcoming concerts.'
 							);
 						}
+						let concertData = '';
+						let result = 1;
 						let artist = res.data[0].lineup[0] || this.userInput;
-						let vName = res.data[0].venue.name || 'Not Available';
-						let vCity = res.data[0].venue.city || 'Not Available';
-						let vRegion = res.data[0].venue.region || 'Not Available';
-						let vCountry =
-							res.data[0].venue.country || 'Not Available';
-						let vLocation = vCity + ', ' + vRegion + ', ' + vCountry;
-						let vDate =
-							MOMENT(res.data[0].datetime, MOMENT.ISO_8601).format(
-								'L HH:mm'
-							) || 'Not Available';
-						this.logConcert(artist, vName, vLocation, vDate);
+						// console.log(res.data);
+						res.data.forEach((concert) => {
+							let vName = concert.venue.name || 'Not Available';
+							let vCity = concert.venue.city || 'Not Available';
+							let vRegion = concert.venue.region || 'Not Available';
+							let vCountry = concert.venue.country || 'Not Available';
+							let vLocation =
+								vCity + ', ' + vRegion + ', ' + vCountry;
+							if (vRegion === 'Not Available') {
+								vLocation = vCity + ', ' + vCountry;
+							}
+							let vDate =
+								MOMENT(concert.datetime, MOMENT.ISO_8601).format(
+									'L HH:mm'
+								) || 'Not Available';
+							concertData +=
+								`\nConcert ${result}\n` +
+								`Venue:           ${vName}\n` +
+								`Location:        ${vLocation}\n` +
+								`Date:            ${vDate}\n` +
+								`${this.itemSeparator}`;
+							result++;
+						});
+						this.logConcert(artist, concertData);
 					})
 					.catch((err) =>
 						this.logError('Artist', this.userInput, err)
@@ -61,14 +77,23 @@ const LIRI = {
 				}
 				SPOTIFY.search({ type: 'track', query: this.userInput })
 					.then((res) => {
-						let artist =
-							res.tracks.items[0].artists[0].name || 'Not Available';
-						let song = res.tracks.items[0].name || 'Not Available';
-						let link =
-							res.tracks.items[0].preview_url || 'Not Available';
-						let album =
-							res.tracks.items[0].album.name || 'Not Available';
-						this.logSong(artist, song, link, album);
+						let trackData = '';
+						let result = 1;
+						res.tracks.items.forEach((track) => {
+							let artist = track.artists[0].name || 'Not Available';
+							let song = track.name || 'Not Available';
+							let link = track.preview_url || 'Not Available';
+							let album = track.album.name || 'Not Available';
+							trackData +=
+								`\nTrack ${result}\n` +
+								`Artist:          ${artist}\n` +
+								`Song:            ${song}\n` +
+								`Preview Link:    ${link}\n` +
+								`Album:           ${album}\n` +
+								`${this.itemSeparator}`;
+							result++;
+						});
+						this.logSong(trackData);
 					})
 					.catch((err) => {
 						console.log(err);
@@ -140,13 +165,11 @@ const LIRI = {
 				);
 		}
 	},
-	logConcert   : function(artist, venue, location, date) {
+	logConcert    : function(artist, concertData) {
 		let logText =
 			`\n${this.logTime}\n` +
 			`Artist:          ${artist}\n` +
-			`Venue:           ${venue}\n` +
-			`Location:        ${location}\n` +
-			`Date:            ${date}\n` +
+			`${concertData}\n` +
 			this.logSeparator;
 		console.log(logText);
 		FS.appendFile('log.txt', logText, (err) => {
@@ -155,14 +178,9 @@ const LIRI = {
 			}
 		});
 	},
-	logSong      : function(artist, song, link, album) {
+	logSong       : function(trackData) {
 		let logText =
-			`\n${this.logTime}\n` +
-			`Artist:          ${artist}\n` +
-			`Song:            ${song}\n` +
-			`Preview Link:    ${link}\n` +
-			`Album:           ${album}\n` +
-			this.logSeparator;
+			`\n${this.logTime}\n` + `${trackData}\n` + this.logSeparator;
 		console.log(logText);
 		FS.appendFile('log.txt', logText, (err) => {
 			if (err) {
@@ -170,7 +188,7 @@ const LIRI = {
 			}
 		});
 	},
-	logMovie     : function(
+	logMovie      : function(
 		title,
 		year,
 		imdb,
@@ -199,7 +217,7 @@ const LIRI = {
 		});
 	},
 
-	logError     : function(type, query, err) {
+	logError      : function(type, query, err) {
 		let logText =
 			`\n${this.logTime}\n` +
 			`${type}:           ${query}\n` +
