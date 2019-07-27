@@ -23,16 +23,15 @@ const LIRI = {
 	omdbURL      : `http://www.omdbapi.com/?apikey=${OMDB_KEY}&t=`,
 	bandsURL1    : 'https://rest.bandsintown.com/artists/',
 	bandsURL2    : `/events?app_id=${BANDS_KEY}`,
-
-	logNum       : 0,
-	logSeparator : '-------------------------------',
 	userInput    : process.argv.slice(3).join('+'),
+	logTime      : '',
+	logSeparator : '------------------------------------------',
 
 	askLIRI      : function(command) {
+		this.logTime = MOMENT().format('L HH:mm:ss');
+		console.log(this.logTime);
 		switch (command) {
 			case 'concert-this':
-				//node liri.js concert-this <artist name/band name>
-				//search bands in town for an artist
 				AXIOS.get(this.bandsURL1 + this.userInput + this.bandsURL2)
 					.then((res) => {
 						let artist, vName, vCity, vRegion, vCountry, vDate;
@@ -57,9 +56,11 @@ const LIRI = {
 						console.log(
 							artist + '\n' + vName + '\n' + vLocation + '\n' + vDate
 						);
-						// this.logConcert(artist, vName, vLocation, vDate);
+						this.logConcert(artist, vName, vLocation, vDate);
 					})
-					.catch((err) => console.log(err));
+					.catch((err) =>
+						this.logError('Artist', this.userInput, err)
+					);
 				break;
 			case 'spotify-this-song':
 				//node liri.js spotify-this <song-name-here>
@@ -72,18 +73,46 @@ const LIRI = {
 				this.logSong();
 				break;
 			case 'movie-this':
-				//node liri.js movie-this <movie name here>
-				//search omdb api for movie name
-				//	title
-				//	release year
-				//	IMDB rating
-				//	Rotten Tomatoes rating
-				//	Country where produced
-				//	language of movie
-				//	plot of movie
-				//	actors in movie
-				//default movie: "Mr. Nobody"
-				this.logMovie();
+				if (this.userInput === '') {
+					this.userInput = 'Mr. Nobody';
+				}
+				AXIOS.get(this.omdbURL + this.userInput)
+					.then((res) => {
+						if (res.data.Error) {
+							throw new Error(res.data.Error);
+						} else {
+							console.log(res.data);
+							let title = res.data.Title;
+							let year = res.data.Released;
+							let imdbIndex = res.data.Ratings.findIndex((rating) => {
+								return rating.Source === 'Internet Movie Database';
+							});
+							let imdb = res.data.Ratings[imdbIndex].Value;
+							let tomatoIndex = res.data.Ratings.findIndex(
+								(rating) => {
+									return rating.Source === 'Rotten Tomatoes';
+								}
+							);
+							let tomato = res.data.Ratings[tomatoIndex].Value;
+							let country = res.data.Country;
+							let lang = res.data.Language;
+							let plot = res.data.Plot;
+							let actors = res.data.Actors;
+							this.logMovie(
+								title,
+								year,
+								imdb,
+								tomato,
+								country,
+								lang,
+								plot,
+								actors
+							);
+						}
+					})
+					.catch((err) => {
+						this.logError('Movie', this.userInput, err);
+					});
 				break;
 			case 'do-what-it-says':
 				FS.readFile('random.txt', 'utf8', (err, data) => {
@@ -107,26 +136,30 @@ const LIRI = {
 		}
 	},
 	logConcert   : function(artist, venue, location, date) {
-		console.log('logged concert');
-		//append to log.txt
-		//log num
-		//artist
-		//	venue
-		//	location
-		//	date
-		//log separator
-		this.logNum++;
+		// console.log('logged concert');
+		let logText =
+			this.logTime +
+			'\n' +
+			`Artist:          ${artist}\n` +
+			`Venue:           ${venue}\n` +
+			`Location:        ${location}\n` +
+			`Date:            ${date}\n` +
+			this.logSeparator +
+			'\n';
+		FS.appendFile('log.txt', logText, (err) => {
+			if (err) {
+				return console.log(err);
+			}
+		});
 	},
 	logSong      : function(artist, song, link, album) {
-		console.log('logged song');
+		// console.log('logged song');
 		//append to log.txt
-		//log num
 		//	artist
 		//	song
 		//	link
 		//	album
 		//log separator
-		//log num ++
 	},
 	logMovie     : function(
 		title,
@@ -138,24 +171,43 @@ const LIRI = {
 		plot,
 		actors
 	) {
-		console.log('logged movie');
-		//append to log.txt
-		//log num
-		//	title
-		//	year
-		//	imdb
-		//	tomato
-		//	country
-		//	lang
-		//	plot
-		//	actors
-		//log separator
-		//log num ++
+		let logText =
+			this.logTime +
+			'\n' +
+			`Title:           ${title}\n` +
+			`Released:        ${year}\n` +
+			`IMDB:            ${imdb}\n` +
+			`Rotten Tomatoes: ${tomato}\n` +
+			`Countries:       ${country}\n` +
+			`Languages:       ${lang}\n` +
+			`Plot:            ${plot}\n` +
+			`Actors:          ${actors}\n` +
+			this.logSeparator +
+			'\n';
+		FS.appendFile('log.txt', logText, (err) => {
+			if (err) {
+				return console.log(err);
+			}
+		});
 	},
 
-	init         : function() {
-		//Get last used log num from log.txt
-		this.askLIRI(process.argv[2]);
+	logError     : function(type, query, err) {
+		let logText =
+			this.logTime +
+			'\n' +
+			type +
+			':           ' +
+			query +
+			'\nError:           ' +
+			err +
+			'\n' +
+			this.logSeparator +
+			'\n';
+		FS.appendFile('log.txt', logText, (err) => {
+			if (err) {
+				return console.log(err);
+			}
+		});
 	}
 };
 
@@ -163,4 +215,4 @@ const LIRI = {
 // INIT
 //------------------------------------------------
 
-LIRI.init();
+LIRI.askLIRI(process.argv[2]);
