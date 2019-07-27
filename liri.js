@@ -4,14 +4,14 @@
 
 require('dotenv').config();
 
-const SPOTIFY = require('node-spotify-api'),
+const SPOTIFY_API = require('node-spotify-api'),
 	MOMENT = require('moment'),
 	AXIOS = require('axios'),
 	FS = require('fs');
 
 const KEYS = require('./keys');
 
-const SPOTIFY_KEY = new SPOTIFY(KEYS.spotify),
+const SPOTIFY = new SPOTIFY_API(KEYS.spotify),
 	OMDB_KEY = KEYS.omdb,
 	BANDS_KEY = KEYS.bands;
 
@@ -29,33 +29,26 @@ const LIRI = {
 
 	askLIRI      : function(command) {
 		this.logTime = MOMENT().format('L HH:mm:ss');
-		console.log(this.logTime);
 		switch (command) {
 			case 'concert-this':
 				AXIOS.get(this.bandsURL1 + this.userInput + this.bandsURL2)
 					.then((res) => {
-						let artist, vName, vCity, vRegion, vCountry, vDate;
 						if (!res.data.length) {
-							artist = this.userInput;
-							vName = 'Not Available';
-							vCity = 'Not Available';
-							vRegion = 'Not Available';
-							vCountry = 'Not Available';
-							vDate = 'Not Available';
-							return console.log(
+							throw new Error(
 								'This artist has no upcoming concerts.'
 							);
 						}
-						artist = res.data[0].lineup[0];
-						vName = res.data[0].venue.name;
-						vCity = res.data[0].venue.city;
-						vRegion = res.data[0].venue.region;
-						vCountry = res.data[0].venue.country;
-						vLocation = vCity + ', ' + vRegion + ', ' + vCountry;
-						vDate = res.data[0].datetime;
-						console.log(
-							artist + '\n' + vName + '\n' + vLocation + '\n' + vDate
-						);
+						let artist = res.data[0].lineup[0] || this.userInput;
+						let vName = res.data[0].venue.name || 'Not Available';
+						let vCity = res.data[0].venue.city || 'Not Available';
+						let vRegion = res.data[0].venue.region || 'Not Available';
+						let vCountry =
+							res.data[0].venue.country || 'Not Available';
+						let vLocation = vCity + ', ' + vRegion + ', ' + vCountry;
+						let vDate =
+							MOMENT(res.data[0].datetime, MOMENT.ISO_8601).format(
+								'L HH:mm'
+							) || 'Not Available';
 						this.logConcert(artist, vName, vLocation, vDate);
 					})
 					.catch((err) =>
@@ -63,14 +56,23 @@ const LIRI = {
 					);
 				break;
 			case 'spotify-this-song':
-				//node liri.js spotify-this <song-name-here>
-				//search node-spotify-api for the song
-				//	artist name
-				//	song name
-				//	preview link of song from spotify
-				//	album the song is from
-				//default song: "The Sign" by Ace of Base
-				this.logSong();
+				if (this.userInput === '') {
+					this.userInput = 'The Sign Ace of Base';
+				}
+				SPOTIFY.search({ type: 'track', query: this.userInput })
+					.then((res) => {
+						let artist =
+							res.tracks.items[0].artists[0].name || 'Not Available';
+						let song = res.tracks.items[0].name || 'Not Available';
+						let link =
+							res.tracks.items[0].preview_url || 'Not Available';
+						let album =
+							res.tracks.items[0].album.name || 'Not Available';
+						this.logSong(artist, song, link, album);
+					})
+					.catch((err) => {
+						console.log(err);
+					});
 				break;
 			case 'movie-this':
 				if (this.userInput === '') {
@@ -81,23 +83,25 @@ const LIRI = {
 						if (res.data.Error) {
 							throw new Error(res.data.Error);
 						} else {
-							console.log(res.data);
-							let title = res.data.Title;
-							let year = res.data.Released;
+							let title = res.data.Title || 'Not Available';
+							let year = res.data.Released || 'Not Available';
 							let imdbIndex = res.data.Ratings.findIndex((rating) => {
 								return rating.Source === 'Internet Movie Database';
 							});
-							let imdb = res.data.Ratings[imdbIndex].Value;
+							let imdb =
+								res.data.Ratings[imdbIndex].Value || 'Not Available';
 							let tomatoIndex = res.data.Ratings.findIndex(
 								(rating) => {
 									return rating.Source === 'Rotten Tomatoes';
 								}
 							);
-							let tomato = res.data.Ratings[tomatoIndex].Value;
-							let country = res.data.Country;
-							let lang = res.data.Language;
-							let plot = res.data.Plot;
-							let actors = res.data.Actors;
+							let tomato =
+								res.data.Ratings[tomatoIndex].Value ||
+								'Not Available';
+							let country = res.data.Country || 'Not Available';
+							let lang = res.data.Language || 'Not Available';
+							let plot = res.data.Plot || 'Not Available';
+							let actors = res.data.Actors || 'Not Available';
 							this.logMovie(
 								title,
 								year,
@@ -117,6 +121,7 @@ const LIRI = {
 			case 'do-what-it-says':
 				FS.readFile('random.txt', 'utf8', (err, data) => {
 					if (err) return console.log(err);
+					this.userInput = data.split(',')[1];
 					this.askLIRI(data.split(',')[0]);
 				});
 				break;
@@ -136,16 +141,14 @@ const LIRI = {
 		}
 	},
 	logConcert   : function(artist, venue, location, date) {
-		// console.log('logged concert');
 		let logText =
-			this.logTime +
-			'\n' +
+			`\n${this.logTime}\n` +
 			`Artist:          ${artist}\n` +
 			`Venue:           ${venue}\n` +
 			`Location:        ${location}\n` +
 			`Date:            ${date}\n` +
-			this.logSeparator +
-			'\n';
+			this.logSeparator;
+		console.log(logText);
 		FS.appendFile('log.txt', logText, (err) => {
 			if (err) {
 				return console.log(err);
@@ -153,13 +156,19 @@ const LIRI = {
 		});
 	},
 	logSong      : function(artist, song, link, album) {
-		// console.log('logged song');
-		//append to log.txt
-		//	artist
-		//	song
-		//	link
-		//	album
-		//log separator
+		let logText =
+			`\n${this.logTime}\n` +
+			`Artist:          ${artist}\n` +
+			`Song:            ${song}\n` +
+			`Preview Link:    ${link}\n` +
+			`Album:           ${album}\n` +
+			this.logSeparator;
+		console.log(logText);
+		FS.appendFile('log.txt', logText, (err) => {
+			if (err) {
+				return console.log(err);
+			}
+		});
 	},
 	logMovie     : function(
 		title,
@@ -172,8 +181,7 @@ const LIRI = {
 		actors
 	) {
 		let logText =
-			this.logTime +
-			'\n' +
+			`\n${this.logTime}\n` +
 			`Title:           ${title}\n` +
 			`Released:        ${year}\n` +
 			`IMDB:            ${imdb}\n` +
@@ -182,8 +190,8 @@ const LIRI = {
 			`Languages:       ${lang}\n` +
 			`Plot:            ${plot}\n` +
 			`Actors:          ${actors}\n` +
-			this.logSeparator +
-			'\n';
+			this.logSeparator;
+		console.log(logText);
 		FS.appendFile('log.txt', logText, (err) => {
 			if (err) {
 				return console.log(err);
@@ -193,16 +201,11 @@ const LIRI = {
 
 	logError     : function(type, query, err) {
 		let logText =
-			this.logTime +
-			'\n' +
-			type +
-			':           ' +
-			query +
-			'\nError:           ' +
-			err +
-			'\n' +
-			this.logSeparator +
-			'\n';
+			`\n${this.logTime}\n` +
+			`${type}:           ${query}\n` +
+			`Error:           ${err}\n` +
+			this.logSeparator;
+		console.log(logText);
 		FS.appendFile('log.txt', logText, (err) => {
 			if (err) {
 				return console.log(err);

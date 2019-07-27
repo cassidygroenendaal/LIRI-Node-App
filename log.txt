@@ -1,8 +1,17 @@
-07/27/2019 15:56:37
-Movie: titanic
-Error: Error: Invalid API key!
+
+07/27/2019 17:15:45
+Artist:          Lil Wayne
+Song:            Scared of the Dark (feat. XXXTENTACION)
+Preview Link:    Not Available
+Album:           Spider-Man: Into the Spider-Verse (Soundtrack From & Inspired by the Motion Picture)
 ------------------------------------------
-07/27/2019 15:56:41
+07/27/2019 17:15:55
+Artist:          Ace of Base
+Song:            The Sign
+Preview Link:    https://p.scdn.co/mp3-preview/4c463359f67dd3546db7294d236dd0ae991882ff?cid=34d625ca127a41788bb31fd2593a4e3f
+Album:           The Sign (US Album) [Remastered]
+------------------------------------------
+07/27/2019 17:16:04
 Title:           Us
 Released:        22 Mar 2019
 IMDB:            7.0/10
@@ -12,23 +21,27 @@ Languages:       English
 Plot:            A family's serene beach vacation turns to chaos when their doppelgängers appear and begin to terrorize them.
 Actors:          Lupita Nyong'o, Winston Duke, Elisabeth Moss, Tim Heidecker
 ------------------------------------------
-07/27/2019 16:02:24
+07/27/2019 17:16:17
 Artist:          Young the Giant
 Venue:           Salt Lake City Twilight Concert Series
 Location:        Salt Lake City, UT, United States
-Date:            2019-08-01T19:00:23
+Date:            08/01/2019 19:00
 ------------------------------------------
-07/27/2019 16:02:42
-Title:           Us
-Released:        22 Mar 2019
-IMDB:            7.0/10
-Rotten Tomatoes: 94%
-Countries:       USA, Japan, China
-Languages:       English
-Plot:            A family's serene beach vacation turns to chaos when their doppelgängers appear and begin to terrorize them.
-Actors:          Lupita Nyong'o, Winston Duke, Elisabeth Moss, Tim Heidecker
-------------------------------------------
-07/27/2019 16:03:35
+07/27/2019 17:16:47
 Movie:           titanic
 Error:           Error: Invalid API key!
+------------------------------------------
+07/27/2019 17:17:51
+Title:           The Shawshank Redemption
+Released:        14 Oct 1994
+IMDB:            9.3/10
+Rotten Tomatoes: 91%
+Countries:       USA
+Languages:       English
+Plot:            Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.
+Actors:          Tim Robbins, Morgan Freeman, Bob Gunton, William Sadler
+------------------------------------------
+07/27/2019 17:21:06
+Artist:           drake
+Error:           Error: This artist has no upcoming concerts.
 ------------------------------------------
